@@ -653,7 +653,7 @@ export default function Navbar() {
             <div className="relative flex h-[58px] w-[210px] items-center overflow-visible">
               <span
                 aria-hidden="true"
-                className={`pointer-events-none absolute inset-y-[-8px] left-[-18%] w-[58%] bg-[linear-gradient(120deg,transparent_35%,rgba(255,255,255,0.72)_50%,transparent_65%)] ${logoShineActive ? "animate-logo-shine" : "opacity-0"}`}
+                className={`pointer-events-none absolute inset-y-[-8px] left-[-18%] w-[58%] bg-[linear-gradient(120deg,transparent_30%,rgba(255,255,255,0.85)_45%,rgba(255,255,255,0.6)_55%,transparent_70%)] blur-[0.5px] ${logoShineActive ? "animate-logo-shine" : "opacity-0"}`}
               />
               <Image
                 src="/images/EM web nav logo LightT .png"

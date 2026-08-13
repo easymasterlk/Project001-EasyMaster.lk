@@ -30,8 +30,14 @@ body {
     transform: translateX(-140%) skewX(-20deg);
     opacity: 0;
   }
-  10% {
+  5% {
+    opacity: 0.6;
+  }
+  50% {
     opacity: 1;
+  }
+  95% {
+    opacity: 0.6;
   }
   100% {
     transform: translateX(240%) skewX(-20deg);
@@ -40,7 +46,7 @@ body {
 }
 
 .animate-logo-shine {
-  animation: logo-shine 2.8s ease-in-out infinite;
+  animation: logo-shine 3.5s cubic-bezier(0.42, 0, 0.58, 1) infinite;
 }
 
 @keyframes button-shine {
