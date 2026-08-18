@@ -1,11 +1,11 @@
 generator client {
   provider = "prisma-client"
+  output   = "../src/generated/prisma"
 }
 
 datasource db {
   provider = "postgresql"
-  url       = env("DATABASE_URL")
-  directUrl = env("DIRECT_URL")
+  url      = env("DATABASE_URL")
 }
 
 enum Role {
@@ -13,14 +13,100 @@ enum Role {
   CUSTOMER
 }
 
+enum EmploymentType {
+  FULL_TIME
+  PART_TIME
+  INTERNSHIP
+  CONTRACT
+  FREELANCE
+}
+
+enum WorkMode {
+  ONSITE
+  REMOTE
+  HYBRID
+}
+
+enum CareerStatus {
+  OPEN
+  CLOSED
+}
+
 model User {
   id       String  @id @default(cuid())
   name     String?
   email    String  @unique
-  password String?
+  password String
 
   role Role @default(CUSTOMER)
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+}
+
+model Career {
+  id String @id @default(cuid())
+
+  title      String
+  department String
+  location   String
+
+  employmentType EmploymentType
+  workMode       WorkMode
+
+  experienceLevel String
+
+  shortDescription String
+  description      String
+
+  responsibilities String[]
+  requirements     String[]
+  skills           String[]
+
+  salaryRange String?
+
+  applicationEmail String?
+  applicationUrl   String?
+
+  deadline DateTime?
+
+  status CareerStatus @default(OPEN)
+
+  isPublished Boolean @default(true)
+
+  applications CareerApplication[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model CareerApplication {
+  id String @id @default(cuid())
+
+  careerId String?
+
+  jobTitle String
+
+  firstName String
+  lastName  String
+
+  email String
+  phone String?
+
+  currentRole String?
+  experience  String?
+
+  portfolioUrl String?
+  linkedinUrl  String?
+
+  message String?
+
+  resumeUrl String?
+
+  status String @default("NEW")
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  career Career? @relation(fields: [careerId], references: [id], onDelete: SetNull)
 }
