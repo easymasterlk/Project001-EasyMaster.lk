@@ -10,12 +10,9 @@
   },
   "dependencies": {
     "@prisma/client": "^6.19.3",
-<<<<<<< Updated upstream
-=======
     "bcryptjs": "^3.0.3",
     "jsonwebtoken": "^9.0.3",
     "lucide-react": "^1.23.0",
->>>>>>> Stashed changes
     "next": "16.2.9",
     "pg": "^8.21.0",
     "prisma": "^6.19.3",
